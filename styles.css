@@ -35,3 +35,19 @@ nav {
     background-color: #d1d5db;
     border: 1px solid black;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.starting-symbols button {
+    padding: 1rem;
+    font-size: large;
+}
+
+.starting-symbols {
+    display: flex;
+    gap: 2rem;
+}
