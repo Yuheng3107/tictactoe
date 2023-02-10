@@ -17,15 +17,18 @@
         <h2>Tic Tac Toe Game</h2>
     </nav>
     <main>
-        <div class="game-end"></div>
+        <div class="game-end">
+            <h2>Congratulations</h2>
+            <button class="restart">Restart Game</button>
+        </div>
         
         <form class="game-start" action="">
             <h2>Welcome!</h2>
             <label for="player1">Player 1 (Starts with "X"):</label>
-            <input type="text" id="player1" name="player1" placeholder="Enter Player 1's Name">
+            <input type="text" id="player1" name="player1" placeholder="Enter Player 1's Name" required>
             <label for="player2">Player 2: (Starts with "O")</label>
-            <input type="text" id="player2" name="player2" placeholder="Enter Player 2's Name">
-            <button>Start Game</button>
+            <input type="text" id="player2" name="player2" placeholder="Enter Player 2's Name" required>
+            <button id="start-game-btn">Start Game</button>
         </form>
 
         <div class="starting-symbols">

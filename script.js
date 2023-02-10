@@ -1,5 +1,8 @@
 const symbolButtons = [...document.querySelectorAll('.symbol')];
 const startingSymbols = document.querySelector('.starting-symbols');
+const startGameButton = document.querySelector('#start-game-btn');
+const playerSelectForm = document.querySelector('.game-start');
+const overlay  = document.querySelector('.overlay');
 
 
 symbolButtons.forEach(button => {
@@ -17,7 +20,10 @@ let gameboard = function() {
     // gameboard module
     let board;
     let spaces = [...document.querySelectorAll('.space')];
-    let currentSymbol;
+    let currentSymbol = "X";
+    let currentPlayer;
+    let player1;
+    let player2;
 
     spaces.forEach(space => {
         space.addEventListener('click', (e) => {
@@ -60,7 +66,6 @@ let gameboard = function() {
     function makeMove(index) {
         // activates when the space is clicked, taking the index of the space that was clicked
         // first we place the new move that was made
-        
         let [i, j] = indextoArrayIndices(index);
         board[i][j] = currentSymbol;
         // then display it
@@ -69,6 +74,8 @@ let gameboard = function() {
         checkWinner();
         // then we change the currentSymbol
         currentSymbol = (currentSymbol == "X") ? "O": "X";
+        // then we change the current player
+        setCurrentPlayer((currentPlayer === player1) ? player2: player1);
     }
 
     function indextoArrayIndices(index) {
@@ -93,28 +100,54 @@ let gameboard = function() {
                 if (board[i][j] == null) return;
             }
         }
-        window.alert("Tie.");
+        window.alert("It's a tie.");
         initialise();
         displayGrid();
     }
 
     function displayWinner() {
         // TODO
-        window.alert(`${currentSymbol} is the winner`);
+        window.alert(`${currentPlayer} is the winner`);
         initialise();
         displayGrid();
     }
 
-    return {initialise, setStartingSymbol}
+    function setPlayerNames(name1, name2) {
+        player1 = name1;
+        player2 = name2;
+        setCurrentPlayer(player1);
+    }
+
+    function setCurrentPlayer(player) {
+        currentPlayer = player;
+    }
+
+    function displayEndGame(message) {
+
+    }
+
+
+    return {initialise, setStartingSymbol, setPlayerNames}
 
     
 
 }();
 
 
-function player(name) {
-// TODO
-let playerName = name;
 
-}
+
+startGameButton.addEventListener('click', (e) => {
+    
+    if (!playerSelectForm.checkValidity()) {
+        return;
+    }
+    playerSelectForm.reportValidity();
+    e.preventDefault();
+    gameboard.initialise();
+    gameboard.setPlayerNames(playerSelectForm.elements.player1.value, playerSelectForm.elements.player2.value);
+    playerSelectForm.style.display = "none";
+    overlay.style.display = "none";
+
+    
+})
 
