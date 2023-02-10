@@ -93,3 +93,21 @@ main {
 .starting-symbols {
     display: none;
 }
+
+.game-end {
+    position: fixed;
+    background-color: #e4e4e7;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    z-index: 1000;
+    top: 30vh;
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+
+.game-end button {
+    padding: 10px;
+}

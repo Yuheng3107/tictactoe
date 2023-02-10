@@ -100,14 +100,13 @@ let gameboard = function() {
                 if (board[i][j] == null) return;
             }
         }
-        window.alert("It's a tie.");
+        displayEndGame("It's a tie.");
         initialise();
         displayGrid();
     }
 
     function displayWinner() {
-        // TODO
-        window.alert(`${currentPlayer} is the winner`);
+        displayEndGame(`${currentPlayer} is the winner`);
         initialise();
         displayGrid();
     }
@@ -123,7 +122,16 @@ let gameboard = function() {
     }
 
     function displayEndGame(message) {
-
+        let messageBox = document.querySelector('#message');
+        messageBox.innerText = message;
+        let endGameForm = document.querySelector('.game-end');
+        endGameForm.style.display = "flex";
+        overlay.style.display = "block";
+        let restartButton = document.querySelector('.restart');
+        restartButton.addEventListener('click', () => {
+            endGameForm.style.display = "none";
+            playerSelectForm.style.display = "flex";
+        })
     }
 
 
