@@ -24,16 +24,19 @@ nav {
 
 .board {
     display: grid;
-    height: 50vh;
-    width: 50vh;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
+    height: 60vh;
+    width: 60vh;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin: 2rem;
+    border: 2px solid black;
 }
 
 .space {
     background-color: #d1d5db;
-    border: 1px solid black;
+    border: 2px solid black;
+    font-size: 50px;
+
 }
 
 main {
@@ -50,4 +53,31 @@ main {
 .starting-symbols {
     display: flex;
     gap: 2rem;
+}
+
+.game-start {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 40vh;
+    background-color: #e4e4e7;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.game-start button {
+    padding: 2rem;
+    font-size: larger;
+    margin-top: 2rem;
+}
+
+.game-start input {
+    padding: 5px;
+}
+
+.game-start h2 {
+    align-self: center;
 }
